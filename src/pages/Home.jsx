@@ -4,13 +4,18 @@ import TitleMain from '../components/ui/TitleMain';
 import TitleSecondary from '../components/ui/TitleSecondary';
 import TechStack from '../components/TechStack';
 
+import avatar from '../assets/avatar.jpg';
+import gmailIcon from '../assets/icons/gmail.png';
+import githubIcon from '../assets/icons/github.png';
+import linkedinIcon from '../assets/icons/linkedin.png';
+
 const Home = () => {
   return (
     <Layout>
       <div className="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
         <div className="text-center">
           <img
-            src="/src/assets/avatar.jpg"
+            src={avatar}
             alt="Alex"
             className="rounded-circle border border-success mb-3"
             style={{ width: '180px', height: '180px', objectFit: 'cover' }}
@@ -33,7 +38,7 @@ const Home = () => {
               }}
             >
               <img
-                src="/src/assets/icons/gmail.png"
+                src={gmailIcon}
                 alt="Gmail"
                 style={{ width: '24px', height: '24px' }}
               />
@@ -57,7 +62,7 @@ const Home = () => {
               }}
             >
               <img
-                src="/src/assets/icons/github.png"
+                src={githubIcon}
                 alt="GitHub"
                 style={{ width: '24px', height: '24px' }}
               />
@@ -81,7 +86,7 @@ const Home = () => {
               }}
             >
               <img
-                src="/src/assets/icons/linkedin.png"
+                src={linkedinIcon}
                 alt="LinkedIn"
                 style={{ width: '24px', height: '24px' }}
               />
@@ -102,13 +107,13 @@ const Home = () => {
           </Text>
           <br />
           <div className="text-center">
-          <a
-            href="https://drive.google.com/file/d/1iwvyOCk7Tbm2-j26mjQgwdfn60jfWvm4/view"
-            className="btn btn-success btn-sm mt-3"
-            target="_blank"
-            rel="noopener noreferrer"
+            <a
+              href="https://drive.google.com/file/d/1iwvyOCk7Tbm2-j26mjQgwdfn60jfWvm4/view"
+              className="btn btn-success btn-sm mt-3"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-            Download CV
+              Download CV
             </a>
           </div>
         </div>
