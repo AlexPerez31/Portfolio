@@ -96,14 +96,14 @@ const Home = () => {
 
         <div className="text-white text-center text-md-start">
           <br />
-          <TitleMain>Hi, my name is Alex Pérez</TitleMain>
+          Hi, I’m... <TitleMain>Alex Jordán Pérez Rojas</TitleMain>
           <TitleSecondary>
-            I’m a <span style={{ color: '#00CC66' }}>Software Developer</span> &{' '}
-            <span style={{ color: '#00CC66' }}>DevOps</span>
+            I’m a <span style={{ color: '#00CC66' }}>Software Developer Full Stack</span> &{' '}
+            <span style={{ color: '#00CC66' }}>DevOps</span>.
           </TitleSecondary>
 
           <Text className="mt-2 fst-italic">
-            I design solutions with code and creativity.
+            "I design solutions with code and creativity."
           </Text>
           <br />
           <div className="text-center">
