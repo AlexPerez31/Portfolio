@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <Layout>
       <div className="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-center gap-4">
-        {/* Imagen + Contact Icons */}
         <div className="text-center">
           <img
             src="/src/assets/avatar.jpg"
@@ -17,7 +16,6 @@ const Home = () => {
             style={{ width: '180px', height: '180px', objectFit: 'cover' }}
           />
 
-          {/* Contact Icons con efectos */}
           <div className="d-flex justify-content-center gap-3 fs-4 mt-2">
             <a
               href="mailto:alexjordanperez31@gmail.com"
@@ -91,7 +89,6 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Texto + CV Button */}
         <div className="text-white text-center text-md-start">
           <br />
           <TitleMain>Hi, my name is Alex Pérez</TitleMain>
@@ -104,7 +101,6 @@ const Home = () => {
             I design solutions with code and creativity.
           </Text>
           <br />
-          {/* CV Button */}
           <div className="text-center">
           <a
             href="https://drive.google.com/file/d/1iwvyOCk7Tbm2-j26mjQgwdfn60jfWvm4/view"
@@ -118,14 +114,12 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Título del stack */}
       <div className="text-center mt-5">
         <h2 style={{ color: '#FF6700', fontSize: '23px', fontWeight: 'bold' }}>
           My Tech Stack
         </h2>
       </div>
 
-      {/* Tech Stack Grid */}
       <TechStack />
     </Layout>
   );

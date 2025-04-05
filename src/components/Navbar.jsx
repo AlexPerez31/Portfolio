@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
       <div className="container px-5">
-        
+
         <div className="navbar-brand d-flex align-items-center gap-2">
           <img
             src={logo}
@@ -22,7 +22,6 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Collapse toggle (mobile) */}
         <button
           className="navbar-toggler"
           type="button"
@@ -32,7 +31,6 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navigation links */}
         <div className="collapse navbar-collapse justify-content-end" id="navMenu">
           <ul className="navbar-nav gap-2">
             <li className="nav-item">
