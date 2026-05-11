@@ -8,6 +8,7 @@ export const translations = {
     home: {
       greeting: "Hi, I'm",
       viewProjects: 'View Projects',
+      career: 'My career',
       contactMe: 'Contact Me',
       downloadCV: 'Download CV',
       techLabel: 'Tech Stack',
@@ -64,6 +65,7 @@ export const translations = {
     home: {
       greeting: 'Hola, soy',
       viewProjects: 'Ver proyectos',
+      career: 'Mi carrera',
       contactMe: 'Contáctame',
       downloadCV: 'Descargar CV',
       techLabel: 'Stack tecnológico',

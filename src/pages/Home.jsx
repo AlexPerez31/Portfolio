@@ -84,6 +84,9 @@ export default function Home() {
               <Link to="/projects" className="btn btn-primary">
                 {t('home.viewProjects')} <FaArrowRight />
               </Link>
+              <Link to="/resume" className="btn btn-primary">
+                {t('home.career')} <FaArrowRight />
+              </Link>
               <a href={`mailto:${personalInfo.email}`} className="btn btn-outline">
                 {t('home.contactMe')}
               </a>
