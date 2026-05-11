@@ -15,7 +15,6 @@ export const personalInfo = {
   },
 }
 
-// icon: null → renders text-only pill (no icon import needed)
 export const techStack = [
   {
     category: { en: 'Backend', es: 'Backend' },
