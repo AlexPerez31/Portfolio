@@ -1,0 +1,75 @@
+/* Container fills the entire CTA box */
+.neon-controllers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Each controller wrapper */
+.neon-ctrl-wrap {
+  position: absolute;
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+/* Neon glow: triple drop-shadow for the lamp-outline effect */
+.neon-ctrl-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 0 3px currentColor)
+    drop-shadow(0 0 8px currentColor)
+    drop-shadow(0 0 18px currentColor);
+}
+
+/* ── Drift animation keyframes ──
+   All controllers start somewhere in the lower-mid of the card,
+   float upward with horizontal drift, and fade out at the top.
+   Bottom values are set via inline style; translateY handles the rise. */
+
+@keyframes neonDrift1 {  /* gentle right lean */
+  0%   { transform: translateY(0)     translateX(0)    rotate(-7deg); opacity: 0; }
+  10%  { opacity: 0.7; }
+  80%  { opacity: 0.7; }
+  100% { transform: translateY(-420px) translateX(26px)  rotate(9deg);  opacity: 0; }
+}
+
+@keyframes neonDrift2 {  /* gentle left lean */
+  0%   { transform: translateY(0)     translateX(0)    rotate(8deg);  opacity: 0; }
+  10%  { opacity: 0.65; }
+  80%  { opacity: 0.65; }
+  100% { transform: translateY(-420px) translateX(-30px) rotate(-7deg); opacity: 0; }
+}
+
+@keyframes neonDrift3 {  /* right zigzag */
+  0%   { transform: translateY(0)     translateX(0)    rotate(-4deg); opacity: 0; }
+  10%  { opacity: 0.68; }
+  35%  { transform: translateY(-130px) translateX(20px)  rotate(6deg); }
+  65%  { transform: translateY(-270px) translateX(-12px) rotate(-9deg); }
+  80%  { opacity: 0.68; }
+  100% { transform: translateY(-420px) translateX(16px)  rotate(5deg);  opacity: 0; }
+}
+
+@keyframes neonDrift4 {  /* left zigzag */
+  0%   { transform: translateY(0)     translateX(0)    rotate(10deg);  opacity: 0; }
+  10%  { opacity: 0.72; }
+  35%  { transform: translateY(-130px) translateX(-22px) rotate(-6deg); }
+  65%  { transform: translateY(-270px) translateX(14px)  rotate(9deg); }
+  80%  { opacity: 0.72; }
+  100% { transform: translateY(-420px) translateX(-20px) rotate(-5deg); opacity: 0; }
+}
+
+@keyframes neonDrift5 {  /* gentle wobble up */
+  0%   { transform: translateY(0)     translateX(0)   rotate(-3deg); opacity: 0; }
+  10%  { opacity: 0.62; }
+  25%  { transform: translateY(-95px)  translateX(9px)  rotate(4deg); }
+  50%  { transform: translateY(-200px) translateX(-9px) rotate(-4deg); }
+  75%  { transform: translateY(-310px) translateX(7px)  rotate(5deg); }
+  80%  { opacity: 0.62; }
+  100% { transform: translateY(-420px) translateX(-6px) rotate(-2deg); opacity: 0; }
+}

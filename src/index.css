@@ -1,0 +1,308 @@
+/* ===== DESIGN SYSTEM ===== */
+
+/* @property lets CSS variables animate smoothly between values */
+@property --accent-blue {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #4ade80;
+}
+@property --border-accent-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(74, 222, 128, 0.25);
+}
+@property --timeline-mid {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #22d3ee;
+}
+
+:root {
+  /* Backgrounds */
+  --bg-base:    #080b12;
+  --bg-surface: #0d1120;
+  --bg-card:    #121726;
+  --bg-card-hover: #161d2e;
+  --bg-glass:   rgba(13, 17, 32, 0.7);
+
+  /* Borders */
+  --border:       #1a2035;
+  --border-light: #222c42;
+  --border-accent: rgba(74, 222, 128, 0.25);
+
+  /* Accents — starts green, cycles to blue via JS */
+  --accent-blue:   #4ade80;
+  --accent-orange: #fb923c;
+  --accent-purple: #a78bfa;
+  --accent-green:  #a3e635;
+  --timeline-mid:  #22d3ee;
+
+  /* Text */
+  --text-primary:   #eef2ff;
+  --text-secondary: #8892a4;
+  --text-muted:     #4a5568;
+
+  /* Gradients */
+  --grad-hero:  linear-gradient(135deg, #080b12 0%, #0d1120 50%, #080b12 100%);
+  --grad-accent: linear-gradient(135deg, #4ade80, #22d3ee);
+  --grad-card:  linear-gradient(145deg, #121726, #0d1120);
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(74, 222, 128, 0.1);
+  --shadow-glow-orange: 0 0 30px rgba(251, 146, 60, 0.1);
+
+  /* Fonts */
+  --font-display: 'Urbanist', sans-serif;
+  --font-body:    'Manrope', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Transitions */
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Theme transition — 2s for color cycling */
+  transition: --accent-blue 2s ease, --timeline-mid 2s ease;
+}
+
+/* Blue theme — applied by JS every other minute */
+:root[data-theme="blue"] {
+  --accent-blue:   #38bdf8;
+  --border-accent: rgba(56, 189, 248, 0.25);
+  --shadow-glow:   0 0 30px rgba(56, 189, 248, 0.1);
+  --grad-accent:   linear-gradient(135deg, #38bdf8, #a78bfa);
+  --timeline-mid:  #a78bfa;
+  transition: --accent-blue 2s ease, --timeline-mid 2s ease;
+}
+
+/* Make all key visual elements respond smoothly to the theme change */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition:
+    color 2s ease,
+    background-color 2s ease,
+    border-color 2s ease,
+    box-shadow 2s ease,
+    var(--transition); /* keep component-level hover transitions */
+}
+
+/* But keep hover/interactive transitions at their normal speed */
+.btn, .card, .tech-item, .hero__social, .navbar__link,
+.footer__social-link, .project-card, .cert-card, .filter-btn,
+.lang-toggle, .carousel__btn {
+  transition:
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* During a theme transition (class added by JS), slow those elements down */
+:root[data-transitioning] .btn,
+:root[data-transitioning] .card,
+:root[data-transitioning] .tech-item,
+:root[data-transitioning] .hero__social,
+:root[data-transitioning] .navbar__link,
+:root[data-transitioning] .footer__social-link,
+:root[data-transitioning] .lang-toggle {
+  transition:
+    color 2s ease,
+    background-color 2s ease,
+    border-color 2s ease,
+    box-shadow 2s ease !important;
+}
+
+/* ===== RESET & BASE ===== */
+/* Note: box-sizing is set via *, but we handle transitions separately above */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-blue); }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+/* ===== UTILITIES ===== */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.accent-blue  { color: var(--accent-blue); }
+.accent-orange { color: var(--accent-orange); }
+.accent-purple { color: var(--accent-purple); }
+
+/* ===== FADE IN ANIMATION ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.2); }
+  50%       { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: var(--bg-base);
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--accent-blue) 75%, white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent-blue) 28%, transparent);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--border-light);
+  color: var(--text-secondary);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--grad-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  background: color-mix(in srgb, var(--accent-blue) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-blue) 22%, transparent);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--accent-blue);
+  white-space: nowrap;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--grad-accent);
+  border-radius: 2px;
+  margin-bottom: 3rem;
+}
+
+/* ===== NOISE OVERLAY ===== */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container { padding: 0 1.25rem; }
+  .section   { padding: 4rem 0; }
+}
